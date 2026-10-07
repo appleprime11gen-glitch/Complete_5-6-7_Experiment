@@ -1,0 +1,26 @@
+{
+  "measured_at_utc": "2026-10-07T07:52:57.476758+00:00",
+  "mode": "enabled",
+  "cache_setting_required": "APP_CACHE_ENABLED=true",
+  "workload": "GET /api/posts/search, page=0,size=10,sortBy=createdAt,direction=desc",
+  "keyword": "experiment6-bench-76b035aff3cf",
+  "dataset_size_posts": 5000,
+  "request_count": 1000,
+  "warmup_request_count": 50,
+  "warmup_errors": 0,
+  "concurrency": 10,
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.7",
+    "base_url": "http://localhost:8080"
+  },
+  "cold_first_request_ms": 1231.468,
+  "warm_measurement": {
+    "average_latency_ms": 31.089,
+    "p95_latency_ms": 59.544,
+    "throughput_requests_per_second": 313.99,
+    "error_rate": 0.0,
+    "elapsed_seconds": 3.185
+  },
+  "errors": []
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create, search, update, and manage short posts.">
+    <title>Post Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">POST MANAGEMENT / 01</p>
+                <h1>Small thoughts.<br><em>Well kept.</em></h1>
+                <p class="subtitle">A focused space for writing, revisiting, and refining your ideas.</p>
+            </div>
+            <div class="hero-mark" aria-hidden="true"><span>+</span></div>
+        </header>
+
+        <section class="auth-panel" aria-labelledby="auth-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ACCOUNT</p>
+                    <h2 id="auth-title">Sign in to your posts</h2>
+                </div>
+                <div id="auth-user" class="auth-user hidden">
+                    <span id="auth-identity"></span>
+                    <button type="button" id="logout-button" class="button button-quiet">Log out</button>
+                </div>
+            </div>
+            <form id="auth-form" class="auth-form">
+                <div>
+                    <label for="auth-username">Username</label>
+                    <input id="auth-username" name="username" minlength="3" maxlength="64" autocomplete="username" required>
+                </div>
+                <div>
+                    <label for="auth-password">Password</label>
+                    <input id="auth-password" name="password" type="password" minlength="12" maxlength="72" autocomplete="current-password" required>
+                </div>
+                <div class="auth-actions">
+                    <button type="submit" class="button button-primary" data-auth-action="login">Log in</button>
+                    <button type="submit" class="button button-quiet" data-auth-action="register">Register</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="composer-panel" class="composer-panel hidden" aria-labelledby="composer-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">01 / COMPOSE</p>
+                    <h2 id="composer-title">Put it into words</h2>
+                </div>
+                <span id="form-mode" class="mode-label">New post</span>
+            </div>
+            <form id="post-form">
+                <label for="content">Post content</label>
+                <textarea id="content" name="content" maxlength="280" placeholder="Share something worth remembering..." required></textarea>
+                <div class="form-footer">
+                    <span id="character-count" aria-live="polite">0/280</span>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-edit" class="button button-quiet hidden">Cancel edit</button>
+                        <button type="submit" class="button button-primary" id="submit-button">Create post <span aria-hidden="true">&#8594;</span></button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="posts-section" aria-labelledby="posts-title">
+            <div class="posts-toolbar">
+                <div>
+                    <p class="eyebrow">02 / COLLECTION</p>
+                    <h2 id="posts-title">Your posts <span id="post-count" class="count">0</span></h2>
+                </div>
+                <form id="search-form" class="search-form" role="search">
+                    <label class="sr-only" for="search-input">Search posts by content</label>
+                    <input id="search-input" type="search" placeholder="Search your posts..." autocomplete="off">
+                    <label class="sr-only" for="sort-by">Sort posts by</label>
+                    <select id="sort-by" aria-label="Sort posts by">
+                        <option value="createdAt">Newest</option>
+                        <option value="id">ID</option>
+                        <option value="content">Content</option>
+                    </select>
+                    <label class="sr-only" for="sort-direction">Sort direction</label>
+                    <select id="sort-direction" aria-label="Sort direction">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                    <label class="sr-only" for="page-size">Posts per page</label>
+                    <select id="page-size" aria-label="Posts per page">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                    <button type="submit" class="button button-dark">Search</button>
+                    <button type="button" id="clear-search" class="button button-quiet">Clear</button>
+                </form>
+            </div>
+            <div id="message" class="message" role="status" aria-live="polite"></div>
+            <div id="loading-state" class="loading-state hidden" role="status" aria-live="polite">
+                <span class="spinner" aria-hidden="true"></span> Loading posts...
+            </div>
+            <div id="posts-list" class="posts-list" aria-live="polite"></div>
+            <nav id="pagination" class="pagination" aria-label="Post pages">
+                <button type="button" id="previous-page" class="button button-quiet">Previous</button>
+                <span id="page-status" aria-live="polite">0 results</span>
+                <button type="button" id="next-page" class="button button-quiet">Next</button>
+            </nav>
+            <div id="empty-state" class="empty-state hidden">
+                <span class="empty-icon" aria-hidden="true">+</span>
+                <strong>No posts here yet.</strong>
+                <span>Start with an idea above, or try another search.</span>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
